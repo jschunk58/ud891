@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Radio Group</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="main.css">
@@ -11,22 +11,22 @@
 
     <div class="demo">
 
-      <h3>Drink Options</h3>
+      <h3 id="drink-label">Drink Options</h3>
 
-      <ul id="group1" class="radiogroup">
-        <li tabindex="0" class="radio" checked>
+      <ul id="group1" class="radiogroup" aria-labelledby="drink-label" role="radiogroup">
+        <li role="radio" tabindex="0" class="radio" checked>
           Water
         </li>
-        <li tabindex="-1" class="radio">
+        <li role="radio" tabindex="-1" class="radio">
           Tea
         </li>
-        <li tabindex="-1" class="radio">
+        <li role="radio" tabindex="-1" class="radio">
           Coffee
         </li>
-        <li tabindex="-1" class="radio">
+        <li role="radio" tabindex="-1" class="radio">
           Cola
         </li>
-        <li tabindex="-1" class="radio">
+        <li role="radio" tabindex="-1" class="radio">
           Ginger Ale
         </li>
       </ul>

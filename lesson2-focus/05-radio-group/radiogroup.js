@@ -21,6 +21,7 @@
     this.focusedButton = this.buttons[this.focusedIdx];
 
     this.el.addEventListener('keydown', this.handleKeyDown.bind(this));
+    //console.log('Buttons length: ', this.buttons.length);
   }
 
   RadioGroup.prototype.handleKeyDown = function(e) {
@@ -32,7 +33,8 @@
         e.preventDefault();
 
         // This seems like a good place to do some stuff :)
-
+        this.focusedIdx = (this.focusedIdx == 0) ? this.focusedIdx = this.buttons.length-1 : this.focusedIdx - 1;
+        //console.info('Current focused index: ', this.focusedIdx);
         break;
 
       }
@@ -43,12 +45,14 @@
         e.preventDefault();
 
         // This seems like a good place to do some stuff :)
+        this.focusedIdx = (this.focusedIdx == this.buttons.length-1) ? this.focusedIdx = 0 : this.focusedIdx + 1;
+        //console.info('Current focused index: ', this.focusedIdx);
 
         break;
       }
 
-    }
-
+    };
+    console.log('Current focused index: ', this.focusedIdx);
     this.changeFocus(this.focusedIdx); // <-- Hmm, interesting...
   };
 
@@ -56,12 +60,14 @@
     // Set the old button to tabindex -1
     this.focusedButton.tabIndex = -1;
     this.focusedButton.removeAttribute('checked');
+    this.focusedButton.removeAttribute('aria-checked');
 
     // Set the new button to tabindex 0 and focus it
     this.focusedButton = this.buttons[idx];
     this.focusedButton.tabIndex = 0;
     this.focusedButton.focus();
     this.focusedButton.setAttribute('checked', 'checked');
+    this.focusedButton.setAttribute('aria-checked', 'true');
   };
 
   var group1 = new RadioGroup('#group1');
